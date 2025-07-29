@@ -40,3 +40,16 @@ export const postListaContactos = (nombre, email, telefono, direccion) => {
                 return [];
             });
 }
+
+export const deleteContacto = async (id) => {
+    try {
+        const respuesta = await fetch(`https://playground.4geeks.com/contact/agendas/DavidVela1712/contacts/${id}`, {
+            method: 'DELETE'
+        })
+        await new Promise(res => setTimeout(res, 200))
+        
+        return await getListaContactos();
+    } catch (error) {
+        console.log(error)
+    }
+}
